@@ -17,8 +17,7 @@
       content="Toronto and Waterloo's trusted Pokémon card specialists. Sell us your collection, find us at events across Ontario, or shop online."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="./assets/hero-artwork.png" />
-    <meta property="og:url" content="https://example.com/" />
+    <meta property="og:image" content="./assets/logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -28,8 +27,8 @@
       name="twitter:description"
       content="Toronto and Waterloo's trusted Pokémon card specialists. Sell us your collection, find us at events across Ontario, or shop online."
     />
-    <meta name="twitter:image" content="./assets/hero-artwork.png" />
-    <meta name="theme-color" content="#040707" />
+    <meta name="twitter:image" content="./assets/logo.png" />
+    <meta name="theme-color" content="#fff8e5" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -42,28 +41,27 @@
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "ROTO's TCG",
-        "description": "Buy, sell, and trade Pokémon cards in Toronto and Waterloo, Ontario.",
-        "areaServed": ["Toronto, ON", "Waterloo, ON", "Ontario, CA"],
+        "description": "Toronto and Waterloo's trusted Pokemon card specialists. Buy, sell, and trade with Ron and Tom.",
+        "areaServed": ["Toronto, Ontario", "Waterloo, Ontario", "Ontario"],
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Toronto & Waterloo",
           "addressRegion": "ON",
           "addressCountry": "CA"
         },
-        "image": "https://example.com/assets/hero-artwork.png",
-        "url": "https://example.com/",
+        "image": "./assets/logo.png",
         "sameAs": [
           "https://www.instagram.com/rotos_tcg/",
           "https://www.whatnot.com/s/sPpusQs4"
         ]
       }
     </script>
+    <script defer src="./script.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header class="site-header" id="top">
-      <nav class="navbar" aria-label="Primary navigation">
+      <nav class="navbar" aria-label="Primary">
         <a class="brand" href="#top" aria-label="ROTO's TCG home">
           <img src="./assets/logo-no-bg.png" alt="ROTO's TCG logo" />
         </a>
@@ -72,15 +70,15 @@
           class="nav-toggle"
           type="button"
           aria-expanded="false"
-          aria-controls="nav-menu"
-          aria-label="Open menu"
+          aria-controls="site-menu"
+          aria-label="Open navigation"
         >
           <span></span>
           <span></span>
           <span></span>
         </button>
 
-        <div class="nav-panel" id="nav-menu">
+        <div class="nav-panel" id="site-menu">
           <a href="#about">About</a>
           <a href="#events">Events</a>
           <a href="#sell">Sell Your Cards</a>
@@ -90,24 +88,36 @@
     </header>
 
     <main id="main-content">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-media" aria-hidden="true"></div>
-        <div class="hero-scrim" aria-hidden="true"></div>
-        <div class="hero-content section-shell">
-          <p class="eyebrow reveal">Toronto & Waterloo trading card specialists</p>
-          <h1 class="reveal" id="hero-title">Where Every Card Has a Story</h1>
-          <p class="hero-copy reveal">
-            Toronto &amp; Waterloo's trusted Pokémon card specialists. Whether
-            you're buying, selling, or trading — you've found your people.
-          </p>
-          <div class="hero-actions reveal">
-            <a class="button button-primary" href="#sell">Sell Us Your Cards</a>
-            <a class="button button-secondary" href="#events">See Where We'll Be Next</a>
+      <section class="hero section-cream" aria-labelledby="hero-title">
+        <div class="section-shell hero-shell">
+          <div class="hero-copy">
+            <div class="hero-stage reveal">
+              <div class="hero-logo-wrap" data-parallax-root>
+                <div class="hero-glow" aria-hidden="true"></div>
+                <div class="hero-dots" aria-hidden="true"></div>
+                <img
+                  class="hero-logo"
+                  src="./assets/logo-black.png"
+                  alt="ROTO's TCG logo floating above the hero section"
+                  data-parallax-logo
+                />
+              </div>
+            </div>
+            <p class="eyebrow reveal">Toronto &amp; Waterloo trading card specialists</p>
+            <h1 class="reveal" id="hero-title">Where Every Card Has a Story</h1>
+            <p class="hero-text reveal">
+              Toronto &amp; Waterloo's trusted Pok&eacute;mon card specialists. Whether
+              you're buying, selling, or trading — you've found your people.
+            </p>
+            <div class="hero-actions reveal">
+              <a class="button button-primary" href="#sell">Sell Us Your Cards</a>
+              <a class="text-link" href="#events">See Where We'll Be Next</a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section section-what-we-do" id="about" aria-labelledby="about-title">
+      <section class="section section-cream" id="about" aria-labelledby="about-title">
         <div class="section-shell">
           <div class="section-heading reveal">
             <p class="eyebrow">What we do</p>
@@ -115,19 +125,8 @@
           </div>
 
           <div class="service-grid">
-            <article class="service-card reveal">
-              <div class="service-icon" aria-hidden="true">
-                <svg viewBox="0 0 64 64" role="img">
-                  <path
-                    d="M10 26L32 14l22 12-22 12L10 26zm0 12l22 12 22-12"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                  />
-                </svg>
-              </div>
+            <article class="service-card reveal" style="--delay: 0ms">
+              <span class="service-line" aria-hidden="true"></span>
               <h3>Buy</h3>
               <p>
                 From sealed packs to chase singles, we stock what collectors want.
@@ -135,19 +134,8 @@
               </p>
             </article>
 
-            <article class="service-card reveal">
-              <div class="service-icon" aria-hidden="true">
-                <svg viewBox="0 0 64 64" role="img">
-                  <path
-                    d="M19 22h26M19 32h26M19 42h16M14 14h36a4 4 0 014 4v28a4 4 0 01-4 4H14a4 4 0 01-4-4V18a4 4 0 014-4z"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                  />
-                </svg>
-              </div>
+            <article class="service-card reveal" style="--delay: 120ms">
+              <span class="service-line" aria-hidden="true"></span>
               <h3>Sell</h3>
               <p>
                 Got cards collecting dust? We buy collections of all sizes. Fair
@@ -155,19 +143,8 @@
               </p>
             </article>
 
-            <article class="service-card reveal">
-              <div class="service-icon" aria-hidden="true">
-                <svg viewBox="0 0 64 64" role="img">
-                  <path
-                    d="M16 20h32l-6 12H22l-6-12zm8 12v12m16-12v12M20 50h24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                  />
-                </svg>
-              </div>
+            <article class="service-card reveal" style="--delay: 240ms">
+              <span class="service-line" aria-hidden="true"></span>
               <h3>Trade</h3>
               <p>
                 Looking for specific cards? Bring what you have and let's make a
@@ -183,137 +160,120 @@
         </div>
       </section>
 
-      <section class="section section-events section-dark" id="events" aria-labelledby="events-title">
-        <div class="section-shell events-layout">
-          <div class="events-copy">
-            <div class="section-heading reveal">
-              <p class="eyebrow">Where to find us</p>
-              <h2 id="events-title">On the Road</h2>
+      <section class="section section-dark" id="events" aria-labelledby="events-title">
+        <div class="section-shell events-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Where to find us</p>
+            <h2 id="events-title">On the Road</h2>
+          </div>
+
+          <p class="events-copy reveal">
+            We've set up at events across Ontario and we're always looking for the
+            next one.
+          </p>
+
+          <div class="marquee reveal" aria-label="ROTO's event appearances">
+            <div class="marquee-track">
+              <span>HobbyCon</span>
+              <span>NACE</span>
+              <span>CSC</span>
+              <span>Collectors Clash</span>
+              <span>Cardfesta</span>
+              <span>Mewtopia</span>
+              <span>and more</span>
+              <span>HobbyCon</span>
+              <span>NACE</span>
+              <span>CSC</span>
+              <span>Collectors Clash</span>
+              <span>Cardfesta</span>
+              <span>Mewtopia</span>
+              <span>and more</span>
             </div>
-            <p class="reveal">
-              We've set up at events across Ontario and we're always looking for
-              the next one.
+          </div>
+
+          <a
+            class="button button-ghost reveal"
+            href="https://www.instagram.com/rotos_tcg/"
+            target="_blank"
+            rel="noreferrer"
+            >Follow us on Instagram for event updates</a
+          >
+        </div>
+      </section>
+
+      <section class="section section-cream" aria-labelledby="story-title">
+        <div class="section-shell story-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Our story</p>
+            <h2 id="story-title">The Origin</h2>
+          </div>
+
+          <div class="story-body reveal">
+            <p>
+              We didn't start ROTO's with a business plan. Tom and I were just
+              driving around opening packs and filming it under the name Lotad
+              Cards. That was the whole thing — road trips, pulls, and way too
+              much money spent on sealed product.
             </p>
-            <div class="event-marquee reveal" aria-label="Past event appearances">
-              <div class="event-track">
-                <span>HobbyCon</span>
-                <span>NACE</span>
-                <span>CSC</span>
-                <span>Collectors Clash</span>
-                <span>Cardfesta</span>
-                <span>Mewtopia</span>
-                <span>Night Markets</span>
-                <span>Local Trade Nights</span>
-                <span>HobbyCon</span>
-                <span>NACE</span>
-                <span>CSC</span>
-                <span>Collectors Clash</span>
-                <span>Cardfesta</span>
-                <span>Mewtopia</span>
-                <span>Night Markets</span>
-                <span>Local Trade Nights</span>
-              </div>
-            </div>
-            <a
-              class="text-link reveal"
-              href="https://www.instagram.com/rotos_tcg/"
-              target="_blank"
-              rel="noreferrer"
-              >Follow us on Instagram for event updates</a
-            >
-          </div>
-
-          <figure class="events-figure reveal">
-            <img
-              src="./assets/marketplace-artwork.png"
-              alt="A bustling fantasy marketplace scene inspired by card trading events."
-              loading="lazy"
-            />
-          </figure>
-        </div>
-      </section>
-
-      <section class="section section-story" aria-labelledby="story-title">
-        <div class="section-shell story-layout">
-          <figure class="story-figure reveal">
-            <img
-              src="./assets/origin-story-artwork.png"
-              alt="Two adventurers traveling across a fantasy landscape at golden hour."
-              loading="lazy"
-            />
-          </figure>
-
-          <div class="story-copy">
-            <div class="section-heading reveal">
-              <p class="eyebrow">Our story</p>
-              <h2 id="story-title">The Origin</h2>
-            </div>
-            <div class="story-body reveal">
-              <p>
-                Ron and Tom — the story starts simply. Two friends, a road trip,
-                and way too many packs to open. Back then it was Lotad Cards: just
-                a camera, some pulls, and a lot of laughing.
-              </p>
-              <p>
-                Their friends at Uptown Cards and Collectibles offered them two
-                free tables at a Waterloo night market. First time vending. They
-                barely broke even, but something clicked. The energy of trading,
-                the conversations with collectors, the thrill of someone finding
-                exactly what they'd been hunting for.
-              </p>
-              <p>
-                What started as a hobby became a mission. Show after show, city
-                after city — from intimate night markets to massive conventions —
-                ROTO's grew. Ron holds it down in Toronto, Tom in Waterloo. Two
-                cities, one brand, and an ever-growing community of collectors who
-                know that when ROTO's sets up, it's worth stopping by.
-              </p>
-            </div>
+            <p>
+              Our friends at Uptown Cards and Collectibles let us set up two
+              tables at a Waterloo night market for free. We barely made anything
+              that first time, but we had a blast doing it. Talking to other
+              collectors, making trades, watching someone find the card they'd
+              been looking for — that part was addicting.
+            </p>
+            <p>
+              We just kept doing shows after that. Night markets, conventions,
+              whatever we could get into. I'm based in Toronto, Tom's in
+              Waterloo, and ROTO's is whatever table we're set up at that
+              weekend. We're not trying to be the biggest — we just genuinely
+              like doing this.
+            </p>
           </div>
         </div>
       </section>
 
-      <section class="section section-sell" id="sell" aria-labelledby="sell-title">
-        <div class="section-shell sell-layout">
-          <div class="sell-intro">
+      <section class="section section-cream section-form" id="sell" aria-labelledby="sell-title">
+        <div class="section-shell form-shell">
+          <div class="form-intro">
             <div class="section-heading reveal">
               <p class="eyebrow">Sell your cards</p>
               <h2 id="sell-title">Got Cards? Let's Talk.</h2>
             </div>
-            <p class="reveal">
+
+            <p class="form-lead reveal">
               Whether it's a binder full of childhood memories or a fresh pull
               worth a fortune, we want to hear from you. Fill out the form below
               and we'll get back to you within 48 hours.
             </p>
-            <figure class="sell-figure reveal">
-              <img
-                src="./assets/sell-cards-artwork.png"
-                alt="Hands examining a glowing rare trading card."
-                loading="lazy"
-              />
-            </figure>
+
+            <div class="form-points reveal">
+              <p>Fair conversations, clear offers, zero pressure.</p>
+              <p>Collections of all sizes welcome across Toronto, Waterloo, and beyond.</p>
+              <p>We review every submission personally. No bots, no algorithms — just Ron and Tom.</p>
+            </div>
           </div>
 
-          <div class="form-panel reveal" id="contact">
+          <div class="form-card reveal">
             <form
               class="contact-form"
+              id="contact-form"
               action="https://formsubmit.co/YOUR_EMAIL_HERE"
               method="POST"
               enctype="multipart/form-data"
             >
-              <input type="hidden" name="_subject" value="New ROTO's TCG card sale inquiry" />
+              <input type="hidden" name="_subject" value="New ROTO's TCG collection inquiry" />
               <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
 
-              <div class="form-grid">
+              <div class="field-grid">
                 <label class="field">
                   <span>Name</span>
-                  <input type="text" name="name" autocomplete="name" required />
+                  <input type="text" name="name" required autocomplete="name" />
                 </label>
 
                 <label class="field">
                   <span>Email</span>
-                  <input type="email" name="email" autocomplete="email" required />
+                  <input type="email" name="email" required autocomplete="email" />
                 </label>
 
                 <label class="field">
@@ -323,30 +283,24 @@
 
                 <label class="field">
                   <span>City / Location</span>
-                  <input type="text" name="city_location" autocomplete="address-level2" required />
+                  <input type="text" name="location" required autocomplete="address-level2" />
                 </label>
 
-                <label class="field field-full">
+                <label class="field field-wide">
                   <span>Describe the cards you're looking to sell</span>
                   <textarea
-                    name="card_description"
-                    rows="5"
-                    placeholder="Tell us what you've got. Sets, conditions, anything notable."
+                    name="collection_details"
+                    rows="6"
                     required
+                    placeholder="Tell us what you've got. Sets, conditions, anything notable."
                   ></textarea>
                 </label>
 
                 <label class="field">
                   <span>Roughly, what do you have the market value as?</span>
-                  <div class="currency-field">
+                  <div class="money-input">
                     <span aria-hidden="true">$</span>
-                    <input
-                      type="text"
-                      name="estimated_market_value"
-                      inputmode="decimal"
-                      placeholder="0"
-                      required
-                    />
+                    <input type="text" name="market_value" required inputmode="decimal" />
                   </div>
                 </label>
 
@@ -354,89 +308,89 @@
                   <span>What resources did you use to get the market value?</span>
                   <input
                     type="text"
-                    name="valuation_resources"
-                    placeholder="e.g., TCGPlayer, eBay sold listings, PriceCharting..."
+                    name="valuation_sources"
                     required
+                    placeholder="e.g., TCGPlayer, eBay sold listings, PriceCharting..."
                   />
                 </label>
 
-                <label class="field field-full">
+                <label class="field field-wide">
                   <span>What value would make you happy to sell these cards for?</span>
-                  <div class="currency-field">
+                  <div class="money-input">
                     <span aria-hidden="true">$</span>
-                    <input
-                      type="text"
-                      name="target_sale_value"
-                      inputmode="decimal"
-                      placeholder="0"
-                      required
-                    />
+                    <input type="text" name="target_value" required inputmode="decimal" />
                   </div>
                 </label>
 
-                <label class="field field-full">
+                <label class="field field-wide">
                   <span>Upload Photos</span>
+                  <span class="field-hint">Show us what you've got. Up to 5 photos.</span>
                   <input
-                    class="file-input"
                     id="photo-upload"
                     type="file"
                     name="photos"
                     accept="image/*"
                     multiple
                   />
-                  <small>Show us what you've got. Up to 5 photos.</small>
-                  <small class="file-feedback" id="file-feedback" aria-live="polite"></small>
-                </label>
-
-                <label class="checkbox-field field-full">
-                  <input type="checkbox" name="subscribe_updates" checked />
-                  <span>Keep me posted on events, deals, and drops.</span>
+                  <span class="file-feedback" id="file-feedback" aria-live="polite"></span>
                 </label>
               </div>
 
-              <button class="button button-primary submit-button" type="submit">
+              <label class="checkbox-field">
+                <input type="checkbox" name="subscribe" checked />
+                <span>Keep me posted on events, deals, and drops.</span>
+              </label>
+
+              <button class="button button-primary button-submit" type="submit">
                 Send It Over
               </button>
-            </form>
 
-            <p class="form-note">
-              We review every submission personally. No bots, no algorithms — just
-              Ron and Tom.
-            </p>
+              <p class="form-note">
+                We review every submission personally. No bots, no algorithms —
+                just Ron and Tom.
+              </p>
+            </form>
           </div>
         </div>
       </section>
 
-      <section class="section section-streaming" aria-labelledby="streaming-title">
-        <div class="section-shell streaming-panel reveal">
-          <p class="eyebrow">Streaming / online</p>
-          <h2 id="streaming-title">Watch Us Live</h2>
-          <p>
+      <section class="section section-dark section-stream" aria-labelledby="stream-title">
+        <div class="section-shell stream-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Streaming / online</p>
+            <h2 id="stream-title">Watch Us Live</h2>
+          </div>
+          <p class="reveal">
             Catch our live breaks and auctions on Whatnot. Online store coming
             soon.
           </p>
           <a
-            class="button button-secondary"
+            class="text-link reveal"
             href="https://www.whatnot.com/s/sPpusQs4"
             target="_blank"
             rel="noreferrer"
-            >Visit our Whatnot</a
+            >Jump to Whatnot</a
           >
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="section-shell footer-grid">
-        <div class="footer-brand">
-          <img src="./assets/logo-no-bg.png" alt="ROTO's TCG logo" loading="lazy" />
+    <footer class="site-footer section-dark" id="contact">
+      <div class="section-shell footer-shell">
+        <div class="footer-brand reveal">
+          <img
+            src="./assets/logo-no-bg.png"
+            alt="ROTO's TCG logo"
+            loading="lazy"
+            width="180"
+          />
           <p>Toronto &amp; Waterloo, ON</p>
-          <p>&copy; 2025 ROTO's TCG. All rights reserved.</p>
           <p>Ron Chai &amp; Thomas Shivas</p>
+          <p>© 2025 ROTO's TCG. All rights reserved.</p>
         </div>
 
-        <div class="footer-links">
-          <h2 class="footer-heading">Follow along</h2>
+        <div class="footer-links reveal">
+          <h2 class="footer-heading">Stay in the loop</h2>
           <a href="https://www.instagram.com/rotos_tcg/" target="_blank" rel="noreferrer"
             >Instagram</a
           >
@@ -445,30 +399,64 @@
           >
         </div>
 
-        <div class="footer-signup">
-          <h2 class="footer-heading">Stay in the loop</h2>
+        <div class="footer-form reveal">
+          <h2 class="footer-heading">Quick signup</h2>
           <form
-            class="footer-form"
+            class="mini-signup"
             action="https://formsubmit.co/YOUR_EMAIL_HERE"
             method="POST"
           >
             <input type="hidden" name="_subject" value="ROTO's TCG footer signup" />
             <input type="hidden" name="_captcha" value="false" />
-            <label class="sr-only" for="footer-email">Email address</label>
+            <label class="sr-only" for="footer-email">Email</label>
             <input
               id="footer-email"
               type="email"
               name="email"
               placeholder="Email address"
-              autocomplete="email"
               required
+              autocomplete="email"
             />
-            <button class="button button-primary" type="submit">Join the list</button>
+            <button type="submit">Join</button>
           </form>
         </div>
       </div>
     </footer>
 
-    <script src="./script.js" defer></script>
+    <aside
+      class="email-popup"
+      id="email-popup"
+      aria-label="Email signup popup"
+      aria-hidden="true"
+    >
+      <button
+        class="email-popup-close"
+        id="email-popup-close"
+        type="button"
+        aria-label="Dismiss email signup"
+      >
+        ×
+      </button>
+      <p class="email-popup-eyebrow">Stay in the loop</p>
+      <h2 class="email-popup-title">Stay updated on events, drops, and deals.</h2>
+      <form
+        class="email-popup-form"
+        action="https://formsubmit.co/YOUR_EMAIL_HERE"
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="ROTO's TCG popup signup" />
+        <input type="hidden" name="_captcha" value="false" />
+        <label class="sr-only" for="popup-email">Email</label>
+        <input
+          id="popup-email"
+          type="email"
+          name="email"
+          placeholder="Email address"
+          required
+          autocomplete="email"
+        />
+        <button type="submit">Subscribe</button>
+      </form>
+    </aside>
   </body>
 </html>
