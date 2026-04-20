@@ -146,8 +146,8 @@ textarea {
 }
 
 .navbar.is-scrolled {
-  background: rgba(255, 248, 229, 0.84);
-  border-color: rgba(206, 199, 187, 0.9);
+  background: rgba(213, 108, 63, 0.94);
+  border-color: rgba(255, 248, 229, 0.32);
   box-shadow: var(--shadow-medium);
   backdrop-filter: blur(18px);
 }
@@ -159,6 +159,11 @@ textarea {
 
 .brand img {
   width: clamp(4.8rem, 10vw, 6.4rem);
+  transition: filter var(--transition-base);
+}
+
+.navbar.is-scrolled .brand img {
+  filter: brightness(0) invert(1);
 }
 
 .nav-panel {
@@ -172,6 +177,11 @@ textarea {
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.015em;
+  transition: color var(--transition-base);
+}
+
+.navbar.is-scrolled .nav-panel a {
+  color: #fff8e5;
 }
 
 .nav-panel a::after {
@@ -184,7 +194,13 @@ textarea {
   background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform var(--transition-fast);
+  transition:
+    transform var(--transition-fast),
+    background-color var(--transition-base);
+}
+
+.navbar.is-scrolled .nav-panel a::after {
+  background: #fff8e5;
 }
 
 .nav-panel a:hover::after,
@@ -204,13 +220,28 @@ textarea {
   justify-content: center;
   flex-direction: column;
   gap: 0.3rem;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.navbar.is-scrolled .nav-toggle {
+  background: rgba(213, 108, 63, 0.18);
+  border-color: rgba(255, 248, 229, 0.6);
 }
 
 .nav-toggle span {
   width: 1.05rem;
   height: 2px;
   background: var(--ink);
-  transition: transform var(--transition-fast), opacity var(--transition-fast);
+  transition:
+    transform var(--transition-fast),
+    opacity var(--transition-fast),
+    background-color var(--transition-base);
+}
+
+.navbar.is-scrolled .nav-toggle span {
+  background: #fff8e5;
 }
 
 .nav-open .nav-toggle span:nth-child(1) {
@@ -280,12 +311,13 @@ textarea {
   width: min(100%, 40rem);
   transform-style: preserve-3d;
   will-change: transform;
-  transition: transform var(--transition-base);
+  transition: transform 40ms linear;
 }
 
 .hero-glow {
   position: absolute;
   inset: -25% -20% -25% -20%;
+  z-index: 0;
   border-radius: 50%;
   background: radial-gradient(
     ellipse at center,
@@ -298,23 +330,28 @@ textarea {
 
 .hero-dots {
   position: absolute;
-  inset: -30% -30% -30% -30%;
+  inset: -62% -46% -66% -46%;
+  z-index: 1;
   pointer-events: none;
+  overflow: visible;
 }
 
 .hero-dot {
   position: absolute;
+  transform: translate(-50%, -50%);
   border-radius: 999px;
-  background: var(--accent);
+  background: #d56c3f;
+  box-shadow: 0 0 0 0.5px rgba(213, 108, 63, 0.08);
 }
 
 .hero-logo {
   position: relative;
+  z-index: 2;
   width: min(100%, 38rem);
   margin: 0 auto;
   filter: drop-shadow(0 1.5rem 2.5rem rgba(4, 7, 7, 0.14));
   transform: translate3d(0, 0, 0);
-  transition: transform var(--transition-base);
+  transition: transform 40ms linear;
 }
 
 .hero-copy {
@@ -968,6 +1005,14 @@ p {
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
+  }
+
+  .navbar.is-scrolled .nav-panel a {
+    color: var(--ink);
+  }
+
+  .navbar.is-scrolled .nav-panel a::after {
+    background: var(--accent);
   }
 
   .hero-logo-wrap {

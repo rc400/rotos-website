@@ -153,16 +153,26 @@ if ("IntersectionObserver" in window) {
 }
 
 if (parallaxRoot && parallaxLogo) {
-  const handlePointerMove = (event) => {
-    if (!isDesktopPointer()) return;
+  let parallaxFrame = 0;
+  let pointerX = window.innerWidth * 0.5;
+  let pointerY = window.innerHeight * 0.5;
 
-    const bounds = parallaxRoot.getBoundingClientRect();
-    const x = (event.clientX - bounds.left) / bounds.width;
-    const y = (event.clientY - bounds.top) / bounds.height;
-    const rotateY = (x - 0.5) * 10;
-    const rotateX = (0.5 - y) * 10;
-    const driftX = (x - 0.5) * 18;
-    const driftY = (y - 0.5) * 14;
+  const applyParallax = () => {
+    parallaxFrame = 0;
+
+    if (!isDesktopPointer()) {
+      clearParallax();
+      return;
+    }
+
+    const viewportX = pointerX / window.innerWidth;
+    const viewportY = pointerY / window.innerHeight;
+    const offsetX = viewportX - 0.5;
+    const offsetY = viewportY - 0.5;
+    const rotateY = offsetX * 12;
+    const rotateX = -offsetY * 12;
+    const driftX = offsetX * 11;
+    const driftY = offsetY * 9;
 
     parallaxRoot.style.transform =
       "perspective(1000px) rotateX(" +
@@ -174,8 +184,33 @@ if (parallaxRoot && parallaxLogo) {
       "translate3d(" + driftX.toFixed(2) + "px, " + driftY.toFixed(2) + "px, 24px)";
   };
 
-  parallaxRoot.addEventListener("pointermove", handlePointerMove);
-  parallaxRoot.addEventListener("pointerleave", clearParallax);
+  const queueParallaxFrame = () => {
+    if (parallaxFrame) return;
+    parallaxFrame = window.requestAnimationFrame(applyParallax);
+  };
+
+  const handlePointerMove = (event) => {
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+    queueParallaxFrame();
+  };
+
+  window.addEventListener("mousemove", handlePointerMove, { passive: true });
+  window.addEventListener("mouseleave", () => {
+    if (parallaxFrame) {
+      window.cancelAnimationFrame(parallaxFrame);
+      parallaxFrame = 0;
+    }
+    clearParallax();
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) return;
+    if (parallaxFrame) {
+      window.cancelAnimationFrame(parallaxFrame);
+      parallaxFrame = 0;
+    }
+    clearParallax();
+  });
 }
 
 const setFieldState = (field) => {
@@ -250,35 +285,42 @@ if (photoUpload && fileFeedback) {
   });
 }
 
-/* ── Hero Dots (elliptical field, shrinking with distance) ── */
+/* ── Hero Dots (dense halftone ellipse around logo) ── */
 (function generateHeroDots() {
   const container = document.querySelector(".hero-dots");
   if (!container) return;
 
-  const totalDots = 48;
-  const cx = 50; // center X %
-  const cy = 50; // center Y %
-  const radiusX = 46; // ellipse horizontal radius %
-  const radiusY = 42; // ellipse vertical radius %
-  const maxSize = 7; // biggest dot px (closest to center)
-  const minSize = 1.5; // smallest dot px (furthest ring)
-  const rings = 4; // concentric ellipse rings
-  const dotsPerRing = Math.floor(totalDots / rings);
+  container.textContent = "";
+
+  const cx = 50;
+  const cy = 50;
+  const rings = 13;
+  const maxRadiusX = 56;
+  const maxRadiusY = 82;
+  const innerSize = 11.5;
+  const outerSize = 1.4;
+  const innerOpacity = 0.68;
+  const outerOpacity = 0.14;
+  const baseDots = 12;
+  const ringGrowth = 3;
+  const fragment = document.createDocumentFragment();
 
   for (let ring = 0; ring < rings; ring++) {
-    const progress = (ring + 1) / rings; // 0.25 → 1.0 (inner to outer)
-    const rx = radiusX * progress;
-    const ry = radiusY * progress;
-    const dotSize = maxSize - (maxSize - minSize) * progress;
-    const opacity = 0.5 - 0.3 * progress; // inner brighter, outer fainter
-    const count = dotsPerRing + (ring === rings - 1 ? totalDots % rings : 0);
-    const angleOffset = (ring * Math.PI) / rings; // stagger each ring
+    const progress = ring / (rings - 1);
+    const ringFactor = (ring + 1) / rings;
+    const rx = maxRadiusX * ringFactor;
+    const ry = maxRadiusY * ringFactor;
+    const dotSize = innerSize - (innerSize - outerSize) * progress;
+    const opacity = innerOpacity - (innerOpacity - outerOpacity) * progress;
+    const count = baseDots + ring * ringGrowth;
+    const angleOffset = ring * 0.33;
+    const radialJitterX = 1.2 + progress * 1.6;
+    const radialJitterY = 1.6 + progress * 2.4;
 
     for (let i = 0; i < count; i++) {
       const angle = angleOffset + (i / count) * Math.PI * 2;
-      // Add slight randomness so it doesn't look mechanical
-      const jitterX = (Math.random() - 0.5) * 4;
-      const jitterY = (Math.random() - 0.5) * 4;
+      const jitterX = (Math.random() - 0.5) * radialJitterX;
+      const jitterY = (Math.random() - 0.5) * radialJitterY;
       const x = cx + rx * Math.cos(angle) + jitterX;
       const y = cy + ry * Math.sin(angle) + jitterY;
 
@@ -288,8 +330,10 @@ if (photoUpload && fileFeedback) {
       dot.style.height = dotSize + "px";
       dot.style.left = x + "%";
       dot.style.top = y + "%";
-      dot.style.opacity = opacity;
-      container.appendChild(dot);
+      dot.style.opacity = opacity.toFixed(2);
+      fragment.appendChild(dot);
     }
   }
+
+  container.appendChild(fragment);
 })();
