@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Loaded Pack Admin | ROTO's TCG</title>
+    <meta name="description" content="ROTO's TCG loaded pack admin.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../loaded.css">
+  </head>
+  <body>
+    <main class="loaded-app admin-app" data-mode="admin">
+      <section class="login-shell" id="loginShell">
+        <a class="brand-mark login-brand" href="/" aria-label="ROTO's TCG home">
+          <img src="/assets/logo-no-bg.png" alt="ROTO's TCG">
+        </a>
+        <form class="panel login-panel" id="loginForm">
+          <p class="eyebrow">Loaded Admin</p>
+          <h1>Sign in</h1>
+          <label>
+            Email
+            <input id="emailInput" type="email" autocomplete="email" required>
+          </label>
+          <label>
+            Password
+            <input id="passwordInput" type="password" autocomplete="current-password" required>
+          </label>
+          <button class="primary-btn" type="submit">Sign in</button>
+          <p class="form-message" id="loginMessage" role="status"></p>
+        </form>
+      </section>
+
+      <section class="admin-shell" id="adminShell" hidden>
+        <header class="loaded-header">
+          <a class="brand-mark" href="/" aria-label="ROTO's TCG home">
+            <img src="/assets/logo-no-bg.png" alt="ROTO's TCG">
+          </a>
+          <div class="header-copy">
+            <p class="eyebrow">Loaded Admin</p>
+            <h1 id="packTitle">Loading pack...</h1>
+            <p id="packMeta" class="muted">Mark pulls live from your phone.</p>
+          </div>
+          <button class="ghost-btn sign-out-btn" id="signOutButton" type="button">Sign out</button>
+        </header>
+
+        <section class="panel admin-tools">
+          <div>
+            <p class="eyebrow">Ron user ID</p>
+            <p class="user-id" id="userIdText"></p>
+          </div>
+          <button class="primary-btn" id="copyLinkButton" type="button">Copy public QR link</button>
+          <p class="form-message" id="adminMessage" role="status"></p>
+        </section>
+
+        <section class="status-banner" id="statusBanner" hidden></section>
+
+        <section class="panel odds-panel" aria-labelledby="oddsTitle">
+          <div class="panel-heading">
+            <p class="eyebrow">Remaining Odds</p>
+            <h2 id="oddsTitle">Pull chances</h2>
+          </div>
+          <div class="odds-grid" id="oddsGrid"></div>
+        </section>
+
+        <section class="cards-wrap" id="cardsWrap" aria-live="polite"></section>
+      </section>
+    </main>
+
+    <div class="image-modal" id="imageModal" hidden>
+      <button class="modal-backdrop" type="button" data-close-modal aria-label="Close image preview"></button>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="icon-close" type="button" data-close-modal aria-label="Close image preview">×</button>
+        <img id="modalImage" alt="">
+        <div>
+          <h2 id="modalTitle"></h2>
+          <p id="modalMeta" class="muted"></p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./admin.js"></script>
+  </body>
+</html>
