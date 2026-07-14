@@ -393,14 +393,17 @@
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  min-height: 3rem;
+  min-height: 3.25rem;
   padding: 0.9rem 1.25rem;
   border-radius: var(--radius-medium);
   font-family: "DM Sans", sans-serif;
   font-weight: 700;
   font-size: 0.95rem;
+  line-height: 1.2;
   letter-spacing: 0.01em;
   text-align: center;
+  white-space: nowrap;
+  overflow: visible;
   border: 2px solid var(--accent);
   transition:
     background-color var(--transition-fast),
