@@ -1210,3 +1210,92 @@ p {
   color: var(--muted);
   line-height: 1.6;
 }
+
+/* Gear page: full-viewport hero + scroll-snap between sections.
+   Scoped to html[data-snap="gear"] so other pages are untouched. */
+
+html[data-snap="gear"] {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 5.5rem;
+}
+
+html[data-snap="gear"] .gear-hero,
+html[data-snap="gear"] .gear-list-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+html[data-snap="gear"] .gear-hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+  position: relative;
+}
+
+html[data-snap="gear"] .gear-hero .hero-shell {
+  width: 100%;
+}
+
+html[data-snap="gear"] .gear-hero-copy {
+  text-align: center;
+  margin-inline: auto;
+}
+
+html[data-snap="gear"] .gear-hero-copy .eyebrow,
+html[data-snap="gear"] .gear-hero-copy h1,
+html[data-snap="gear"] .gear-hero-copy .hero-text {
+  text-align: center;
+}
+
+.gear-scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 2.25rem;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 44px;
+  border: 2px solid var(--ink);
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 8px;
+  opacity: 0.55;
+  transition: opacity var(--transition-fast);
+}
+
+.gear-scroll-cue:hover,
+.gear-scroll-cue:focus-visible {
+  opacity: 1;
+}
+
+.gear-scroll-cue span {
+  display: block;
+  width: 3px;
+  height: 8px;
+  background: var(--ink);
+  border-radius: 9999px;
+  animation: gear-scroll-cue-bounce 1.6s ease-in-out infinite;
+}
+
+@keyframes gear-scroll-cue-bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-snap="gear"] {
+    scroll-snap-type: none;
+  }
+  .gear-scroll-cue span {
+    animation: none;
+  }
+}
