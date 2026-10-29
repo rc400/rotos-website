@@ -1299,3 +1299,300 @@ html[data-snap="gear"] .gear-hero-copy .hero-text {
     animation: none;
   }
 }
+
+/* ==============================================================
+   Review page
+   ============================================================== */
+
+.review-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.review-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.review-intro h1 {
+  margin: 0;
+}
+
+/* Honeypot — present for bots, invisible and unreachable for people */
+.hp-field {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Star rating --- */
+.star-fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.star-fieldset legend {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  padding: 0;
+  margin-bottom: 0.85rem;
+}
+
+.req {
+  color: var(--accent);
+}
+
+.star-row {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.star {
+  --star-size: clamp(2.4rem, 6vw, 3rem);
+  width: var(--star-size);
+  height: var(--star-size);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: var(--border);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.star svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+  stroke: var(--ink);
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+}
+
+.star.is-filled {
+  color: var(--accent);
+}
+
+.star:hover {
+  transform: translateY(-2px);
+}
+
+.star:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-small);
+}
+
+.star-row.has-error .star {
+  animation: star-shake 400ms ease-out;
+}
+
+.star-row.has-error .star svg {
+  stroke: var(--error);
+}
+
+@keyframes star-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star,
+  .star-row.has-error .star {
+    animation: none;
+    transition: color var(--transition-fast);
+  }
+  .star:hover {
+    transform: none;
+  }
+}
+
+#rating-label {
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* --- Optional field tag --- */
+.optional {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-left: 0.5rem;
+  opacity: 0.8;
+}
+
+.char-count {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.review-submit {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* --- Status line --- */
+.form-status {
+  margin: 0.9rem 0 0;
+  min-height: 1.4em;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.form-status.is-error {
+  color: var(--error);
+}
+
+.form-status.is-success {
+  color: var(--success);
+}
+
+/* --- Success state --- */
+.review-success {
+  text-align: center;
+  padding: 1.5rem 0.5rem 0.5rem;
+}
+
+.review-success-mark {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.5rem;
+  border-radius: 9999px;
+  background: var(--accent);
+  display: grid;
+  place-items: center;
+}
+
+.review-success-mark svg {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.review-success h2 {
+  margin: 0 0 0.75rem;
+}
+
+.review-success p {
+  color: var(--muted);
+  margin: 0 0 2rem;
+  line-height: 1.6;
+}
+
+/* --- Simple footer (review page) --- */
+.footer-shell-simple {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: 2.5rem;
+}
+
+.footer-simple-brand {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.footer-simple-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-simple-nav a {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  transition: opacity var(--transition-fast);
+}
+
+.footer-simple-nav a:hover,
+.footer-simple-nav a:focus-visible {
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .review-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .review-section {
+    min-height: 0;
+  }
+}
+
+/* ==============================================================
+   Homepage review CTA band
+   ============================================================== */
+
+.review-cta {
+  padding-block: clamp(3.5rem, 6vw, 5rem);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.review-cta-shell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.review-cta-copy {
+  max-width: 34rem;
+}
+
+.review-cta-copy h2 {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+.review-cta-copy p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.review-cta-stars {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.review-cta-stars svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--accent);
+}
+
+@media (max-width: 720px) {
+  .review-cta-shell {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

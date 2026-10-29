@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leave a Review — ROTO's TCG</title>
+    <meta
+      name="description"
+      content="Bought, sold, or traded with ROTO's TCG? Tell us how it went. Takes about thirty seconds."
+    />
+    <link rel="canonical" href="https://rotostcg.ca/review" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rotostcg.ca/review" />
+    <meta property="og:title" content="Leave a Review — ROTO's TCG" />
+    <meta
+      property="og:description"
+      content="Bought, sold, or traded with ROTO's TCG? Tell us how it went."
+    />
+
+    <link rel="icon" href="./favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header" id="top">
+      <nav class="navbar" aria-label="Primary">
+        <a class="brand" href="/" aria-label="ROTO's TCG home">
+          <img src="./assets/logo-black.png" alt="ROTO's TCG logo" />
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-menu"
+          aria-label="Open navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-panel" id="site-menu">
+          <a href="/#about">About</a>
+          <a href="/#events">Events</a>
+          <a href="/blog/">Blog</a>
+          <a href="/gear.html">Gear</a>
+          <a href="/#sell">Sell Your Cards</a>
+          <a href="/#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="section section-cream review-section" aria-labelledby="review-title">
+        <div class="section-shell review-shell">
+          <div class="review-intro">
+            <div class="section-heading reveal">
+              <p class="eyebrow">Leave a review</p>
+              <h1 id="review-title">How did we do?</h1>
+            </div>
+
+            <p class="form-lead reveal">
+              Bought, sold, or traded with us at a show or online? Tell us how it
+              went. Takes about thirty seconds, and only the star rating is
+              required.
+            </p>
+
+            <div class="form-points reveal">
+              <p>Every review gets read by Ron and Tom personally.</p>
+              <p>Honest feedback helps us run a better table.</p>
+              <p>Add your email and you're entered in our giveaway.</p>
+            </div>
+          </div>
+
+          <div class="form-card reveal">
+            <form class="contact-form review-form" id="review-form" novalidate>
+              <!-- Honeypot: hidden from humans, bots fill it in -->
+              <div class="hp-field" aria-hidden="true">
+                <label>
+                  Website
+                  <input
+                    type="text"
+                    name="website"
+                    id="hp-website"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </label>
+              </div>
+
+              <fieldset class="star-fieldset" aria-describedby="rating-hint">
+                <legend>Your rating <span class="req">*</span></legend>
+
+                <div class="star-row" id="star-row" role="radiogroup" aria-label="Rating out of 5 stars">
+                  <button type="button" class="star" data-value="1" role="radio" aria-checked="false" aria-label="1 star">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>
+                  </button>
+                  <button type="button" class="star" data-value="2" role="radio" aria-checked="false" aria-label="2 stars">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>
+                  </button>
+                  <button type="button" class="star" data-value="3" role="radio" aria-checked="false" aria-label="3 stars">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>
+                  </button>
+                  <button type="button" class="star" data-value="4" role="radio" aria-checked="false" aria-label="4 stars">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>
+                  </button>
+                  <button type="button" class="star" data-value="5" role="radio" aria-checked="false" aria-label="5 stars">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>
+                  </button>
+                </div>
+
+                <p class="field-hint" id="rating-hint">
+                  <span id="rating-label">Tap a star to rate</span>
+                </p>
+              </fieldset>
+
+              <div class="field-grid">
+                <label class="field field-wide">
+                  <span>Your name <em class="optional">optional</em></span>
+                  <input
+                    type="text"
+                    name="name"
+                    id="review-name"
+                    maxlength="80"
+                    autocomplete="name"
+                    placeholder="How you'd like to be credited"
+                  />
+                </label>
+
+                <label class="field field-wide">
+                  <span>Tell us more <em class="optional">optional</em></span>
+                  <textarea
+                    name="comment"
+                    id="review-comment"
+                    rows="5"
+                    maxlength="2000"
+                    placeholder="What went well? Anything we could do better?"
+                  ></textarea>
+                  <span class="field-hint char-count" id="char-count">0 / 2000</span>
+                </label>
+
+                <label class="field field-wide">
+                  <span>Email <em class="optional">optional</em></span>
+                  <input
+                    type="email"
+                    name="email"
+                    id="review-email"
+                    autocomplete="email"
+                    placeholder="you@example.com"
+                  />
+                  <span class="field-hint">
+                    Add your email to be entered in our giveaway. Leave it blank
+                    and your review still counts, you just won't be entered.
+                  </span>
+                </label>
+              </div>
+
+              <button type="submit" class="button button-primary review-submit" id="review-submit">
+                Submit review
+              </button>
+
+              <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            </form>
+
+            <div class="review-success" id="review-success" hidden>
+              <div class="review-success-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              <h2>Thanks for that.</h2>
+              <p id="success-detail">
+                Your review is in. Ron and Tom read every single one.
+              </p>
+              <a class="button button-ghost" href="/">Back to the site</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer section-dark">
+      <div class="section-shell footer-shell-simple">
+        <p class="footer-simple-brand">ROTO's TCG</p>
+        <nav class="footer-simple-nav" aria-label="Footer">
+          <a href="/">Home</a>
+          <a href="/#sell">Sell Your Cards</a>
+          <a href="/blog/">Blog</a>
+          <a href="https://www.instagram.com/rotos_tcg/" rel="noopener noreferrer" target="_blank">Instagram</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="./js/supabase-config.js"></script>
+    <script src="./js/review.js"></script>
+    <script defer src="./script.js"></script>
+  </body>
+</html>
