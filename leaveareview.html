@@ -72,8 +72,8 @@
 
             <p class="form-lead reveal">
               Bought, sold, or traded with us at a show or online? Tell us how it
-              went. Takes about thirty seconds, and only the star rating is
-              required.
+              went. Takes about thirty seconds. Only your name and a star rating
+              are required.
             </p>
 
             <div class="form-points reveal">
@@ -127,12 +127,13 @@
 
               <div class="field-grid">
                 <label class="field field-wide">
-                  <span>Your name <em class="optional">optional</em></span>
+                  <span>Your name <span class="req">*</span></span>
                   <input
                     type="text"
                     name="name"
                     id="review-name"
                     maxlength="80"
+                    required
                     autocomplete="name"
                     placeholder="How you'd like to be credited"
                   />

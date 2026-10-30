@@ -155,6 +155,12 @@
       return;
     }
 
+    if (!nameEl.value.trim()) {
+      setStatus("Add your name so we know who left the review.", "error");
+      nameEl.focus();
+      return;
+    }
+
     var email = emailEl.value.trim();
     if (email && !validEmail(email)) {
       setStatus("That email doesn't look right. Fix it or leave it blank.", "error");
@@ -166,7 +172,7 @@
       rating: rating,
       comment: commentEl.value.trim() || null,
       email: email || null,
-      name: nameEl.value.trim() || null,
+      name: nameEl.value.trim(),
     };
 
     submitBtn.disabled = true;
