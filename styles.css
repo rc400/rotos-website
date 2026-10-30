@@ -1596,3 +1596,91 @@ html[data-snap="gear"] .gear-hero-copy .hero-text {
     align-items: flex-start;
   }
 }
+
+/* ==============================================================
+   Homepage review ticker (under the hero / pricing guide)
+   ============================================================== */
+
+.review-strip {
+  background: var(--ink);
+  color: var(--cream);
+  overflow: hidden;
+  padding-block: 2.75rem;
+}
+
+.review-strip[hidden] {
+  display: none;
+}
+
+.review-strip__track {
+  display: flex;
+  width: max-content;
+  animation: review-strip-scroll var(--strip-duration, 60s) linear infinite;
+}
+
+.review-strip:hover .review-strip__track,
+.review-strip:focus-within .review-strip__track {
+  animation-play-state: paused;
+}
+
+.review-strip__list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.review-strip__item {
+  flex: none;
+  width: 22rem;
+  height: 13rem;
+  margin-right: 1.5rem;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid rgba(245, 230, 200, 0.18);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.review-strip__stars {
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  font-size: 1rem;
+  flex: none;
+}
+
+.review-strip__quote {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  color: var(--cream);
+  font-size: 1.15rem;
+  line-height: 1.4;
+  quotes: "\201C" "\201D";
+}
+
+.review-strip__name {
+  flex: none;
+  color: var(--accent);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@keyframes review-strip-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 720px) {
+  .review-strip { padding-block: 2rem; }
+  .review-strip__item { width: 17rem; height: 12.5rem; padding: 1.2rem; margin-right: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .review-strip { overflow-x: auto; }
+  .review-strip__track { animation: none; }
+}
