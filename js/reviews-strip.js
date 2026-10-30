@@ -82,7 +82,7 @@
 
     // Repeat until one copy is wider than the screen, so the loop never shows a gap
     var guard = 0;
-    while (first.scrollWidth < window.innerWidth * 1.2 && guard < 20) {
+    while (first.scrollWidth < window.innerWidth * 1.5 && guard < 20) {
       buildList(true).querySelectorAll("li").forEach(function (li) {
         first.appendChild(li);
       });
@@ -95,8 +95,59 @@
     copy.setAttribute("aria-hidden", "true");
     track.appendChild(copy);
 
-    strip.style.setProperty("--strip-duration", first.scrollWidth / PX_PER_SECOND + "s");
+    loopWidth = copy.offsetLeft - first.offsetLeft;
+    if (loopWidth > 0) pos = pos % loopWidth;
   }
+
+  // ---- Auto-scroll that the visitor can grab and swipe ----
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var loopWidth = 0;
+  var pos = 0;
+  var paused = false;
+  var lastTime = null;
+  var resumeTimer;
+
+  // Keep the visitor inside the looped area so they can swipe either way forever
+  function wrap() {
+    if (!loopWidth) return;
+    // Gap between the two thresholds stops the wrap from bouncing back and forth
+    if (strip.scrollLeft > loopWidth + 50) strip.scrollLeft -= loopWidth;
+    else if (strip.scrollLeft < 2) strip.scrollLeft += loopWidth;
+  }
+
+  function pause() {
+    paused = true;
+    clearTimeout(resumeTimer);
+    if (strip.scrollLeft < 2 && loopWidth) strip.scrollLeft += loopWidth;
+  }
+
+  function resumeSoon(delay) {
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(function () {
+      pos = strip.scrollLeft;
+      paused = false;
+    }, delay);
+  }
+
+  function tick(time) {
+    if (lastTime !== null && !paused && !reduceMotion && loopWidth) {
+      pos += (PX_PER_SECOND * (time - lastTime)) / 1000;
+      if (pos >= loopWidth) pos -= loopWidth;
+      strip.scrollLeft = pos;
+    }
+    lastTime = time;
+    requestAnimationFrame(tick);
+  }
+
+  strip.addEventListener("touchstart", pause, { passive: true });
+  strip.addEventListener("touchend", function () { resumeSoon(2500); }, { passive: true });
+  strip.addEventListener("touchcancel", function () { resumeSoon(2500); }, { passive: true });
+  strip.addEventListener("mouseenter", pause);
+  strip.addEventListener("mouseleave", function () { resumeSoon(0); });
+  strip.addEventListener("wheel", function () { pause(); resumeSoon(2500); }, { passive: true });
+  strip.addEventListener("focusin", pause);
+  strip.addEventListener("focusout", function () { resumeSoon(0); });
+  strip.addEventListener("scroll", function () { if (paused) wrap(); }, { passive: true });
 
   var query =
     "/rest/v1/public_reviews?select=comment,display_name" +
@@ -115,9 +166,14 @@
       if (!reviews.length) return;
       strip.hidden = false;
       render();
+      requestAnimationFrame(tick);
 
+      // Only rebuild when the width changes (iPhone fires resize when the URL bar hides)
       var timer;
+      var lastWidth = window.innerWidth;
       window.addEventListener("resize", function () {
+        if (window.innerWidth === lastWidth) return;
+        lastWidth = window.innerWidth;
         clearTimeout(timer);
         timer = setTimeout(render, 250);
       });

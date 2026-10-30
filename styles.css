@@ -1601,11 +1601,24 @@ html[data-snap="gear"] .gear-hero-copy .hero-text {
    Homepage review ticker (under the hero / pricing guide)
    ============================================================== */
 
+/* Hero glow/dots spill past the screen edge on phones; clip them sideways */
+.hero {
+  overflow-x: clip;
+}
+
 .review-strip {
   background: var(--ink);
   color: var(--cream);
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   padding-block: 2.75rem;
+}
+
+.review-strip::-webkit-scrollbar {
+  display: none;
 }
 
 .review-strip[hidden] {
@@ -1615,12 +1628,6 @@ html[data-snap="gear"] .gear-hero-copy .hero-text {
 .review-strip__track {
   display: flex;
   width: max-content;
-  animation: review-strip-scroll var(--strip-duration, 60s) linear infinite;
-}
-
-.review-strip:hover .review-strip__track,
-.review-strip:focus-within .review-strip__track {
-  animation-play-state: paused;
 }
 
 .review-strip__list {
@@ -1670,17 +1677,8 @@ html[data-snap="gear"] .gear-hero-copy .hero-text {
   text-transform: uppercase;
 }
 
-@keyframes review-strip-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
 @media (max-width: 720px) {
   .review-strip { padding-block: 2rem; }
   .review-strip__item { width: 17rem; height: 12.5rem; padding: 1.2rem; margin-right: 1rem; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .review-strip { overflow-x: auto; }
-  .review-strip__track { animation: none; }
-}
